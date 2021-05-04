@@ -16,6 +16,10 @@ export class AirBankProvider implements Provider {
         const resultAccountNumberAmount = regexAccountNumberAmount.exec(text);
         const resultVariableSymbol = regexVariableSymbol.exec(text);
 
+        if (resultAccountNumberAmount === null || resultVariableSymbol === null) {
+            throw new Error("Could not extract payment information from email content");
+        }
+
         return new PaymentData(
             resultAccountNumberAmount[1],
             '3030',
