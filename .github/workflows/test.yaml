@@ -1,12 +1,10 @@
 name: Publish package
 
 on:
-  push:
-    tags:
-      - v*
+  - push
 
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -15,12 +13,7 @@ jobs:
         name: Setup Node
         with:
           node-version: 12
-          registry-url: https://registry.npmjs.org
       - run: yarn install
         name: Install Dependencies
       - run: yarn build
-        name: Build Package
-      - run: yarn publish --new-version ${GITHUB_REF##*/v} --access public
-        name: Publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+        name: Test Build
