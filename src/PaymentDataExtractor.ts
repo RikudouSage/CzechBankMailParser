@@ -1,5 +1,6 @@
 import {PaymentData} from "./PaymentData";
 import {AirBankProvider} from "./Providers/AirBankProvider";
+import {Provider} from "./Provider";
 
 export class PaymentDataExtractor {
     private providers = [
@@ -7,12 +8,15 @@ export class PaymentDataExtractor {
     ];
 
     public async getPaymentData(fromEmail: string, mailContent: string): Promise<PaymentData> {
+        return (await this.getProvider(fromEmail)).parse(mailContent);
+    }
+
+    public async getProvider(fromEmail: string): Promise<Provider> {
         for (const provider of this.providers) {
             if (await provider.supports(fromEmail)) {
-                return await provider.parse(mailContent);
+                return provider;
             }
         }
-
         throw new Error(`Could not find a provider for email ${fromEmail}`);
     }
 }
