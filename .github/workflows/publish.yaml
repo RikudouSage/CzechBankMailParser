@@ -22,7 +22,7 @@ jobs:
         name: Build Package
       - run: git config user.email "you@example.com" && git config user.name "Your Name"
         name: Configure Fake Git User
-      - run: yarn publish --new-version ${GITHUB_REF##*/v} --access public
+      - run: yarn publish --new-version ${GITHUB_REF##*/v} --access public --no-git-tag-version
         name: Publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
