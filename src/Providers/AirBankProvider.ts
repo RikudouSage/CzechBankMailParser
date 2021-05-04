@@ -3,11 +3,11 @@ import {Provider} from "../Provider";
 import {PaymentData} from "../PaymentData";
 
 export class AirBankProvider implements Provider {
-    async supports(fromEmail: string): Promise<boolean> {
+    public async supports(fromEmail: string): Promise<boolean> {
         return fromEmail === 'info@airbank.cz';
     }
 
-    async parse(mailContent: string): Promise<PaymentData> {
+    public async parse(mailContent: string): Promise<PaymentData> {
         const parsed = await simpleParser(mailContent);
         const text = parsed.text;
 

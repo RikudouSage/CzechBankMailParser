@@ -6,7 +6,7 @@ export class PaymentDataExtractor {
         new AirBankProvider(),
     ];
 
-    async getPaymentData(fromEmail: string, mailContent: string): Promise<PaymentData> {
+    public async getPaymentData(fromEmail: string, mailContent: string): Promise<PaymentData> {
         for (const provider of this.providers) {
             if (await provider.supports(fromEmail)) {
                 return await provider.parse(mailContent);
