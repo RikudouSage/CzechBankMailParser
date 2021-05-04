@@ -35,8 +35,7 @@ jobs:
         name: Install Dependencies
       - run: yarn build
         name: Build Package
-      - run: npm version ${GITHUB_REF##*/v}
-      - run: npm publish --access public
+      - run: yarn publish --tag ${GITHUB_REF##*/v} --access public
         name: Publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
