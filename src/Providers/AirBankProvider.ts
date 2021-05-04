@@ -11,6 +11,10 @@ export class AirBankProvider implements Provider {
         const parsed = await simpleParser(mailContent);
         const text = parsed.text;
 
+        if (text === undefined) {
+            throw new Error("Could not parse email text");
+        }
+
         const regexAccountNumberAmount = /číslo ([0-9]+)\/3030 se zvýšil o částku ([0-9., ]+) CZK/;
         const regexVariableSymbol = /Variabilní symbol: (.+)/;
         const resultAccountNumberAmount = regexAccountNumberAmount.exec(text);
