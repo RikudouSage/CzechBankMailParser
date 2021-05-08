@@ -37,7 +37,7 @@ extractor:
 import {PaymentDataExtractor} from "@rikudou/czech-bank-mail-parser";
 
 const extractor = new PaymentDataExtractor();
-const provider = extractor.getProvider('info@airbank.cz'); // provider is now an instance of AirBankProvider
+const provider = await extractor.getProvider('info@airbank.cz'); // provider is now an instance of AirBankProvider
 const result = await provider.parse('...the raw email content...');
 ```
 
