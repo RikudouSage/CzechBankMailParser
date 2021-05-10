@@ -30,7 +30,7 @@ export class AirBankProvider implements Provider {
             Number(
                 resultAccountNumberAmount[2]
                     .replace(",", ".")
-                    .replace(' ', '')
+                    .replace(/ /g, '')
             ),
             resultVariableSymbol ? resultVariableSymbol[1] : null
         );

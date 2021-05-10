@@ -16,6 +16,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "mailparser": "^3.2.0"
+    "mailparser": "^3.2.0",
+    "node-html-parser": "^3.2.0"
   }
 }

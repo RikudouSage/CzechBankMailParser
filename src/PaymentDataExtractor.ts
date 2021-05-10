@@ -2,11 +2,13 @@ import {PaymentData} from "./PaymentData";
 import {AirBankProvider} from "./Providers/AirBankProvider";
 import {Provider} from "./Provider";
 import {EquaBankProvider} from "./Providers/EquaBankProvider";
+import {KomercniBankaProvider} from "./Providers/KomercniBankaProvider";
 
 export class PaymentDataExtractor {
     private providers = [
         new AirBankProvider(),
         new EquaBankProvider(),
+        new KomercniBankaProvider(),
     ];
 
     public async getPaymentData(fromEmail: string, mailContent: string): Promise<PaymentData> {
