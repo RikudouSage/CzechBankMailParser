@@ -3,6 +3,7 @@ Extractor of payment information from notification emails of Czech banks.
 **Supported banks:**
 
 - AirBank
+- Komerční banka
 - EquaBank (partial, without variable symbol)
 
 ## Installation
